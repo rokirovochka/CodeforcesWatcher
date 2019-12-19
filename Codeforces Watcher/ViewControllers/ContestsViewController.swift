@@ -69,7 +69,7 @@ class ContestsViewController: UIViewController, ContestsView {
         content.title = "Hey, Round is coming"
         content.body = contest.name
         
-        let date = Date().addingTimeInterval(Date().distance(to: contestDate) - Constants.notificationDelay)
+        let date = Date().addingTimeInterval(Date().distance(to: contestDate) - Constants.notificationDelayInSeconds)
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
