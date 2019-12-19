@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2193DA96238C3B7B009143C8"
-               BuildableName = "newsGuess.app"
-               BlueprintName = "newsGuess"
-               ReferencedContainer = "container:newsGuess.xcodeproj">
+               BuildableName = "Codeforces Watcher.app"
+               BlueprintName = "Codeforces Watcher"
+               ReferencedContainer = "container:Codeforces Watcher.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2193DA96238C3B7B009143C8"
-            BuildableName = "newsGuess.app"
-            BlueprintName = "newsGuess"
-            ReferencedContainer = "container:newsGuess.xcodeproj">
+            BuildableName = "Codeforces Watcher.app"
+            BlueprintName = "Codeforces Watcher"
+            ReferencedContainer = "container:Codeforces Watcher.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2193DA96238C3B7B009143C8"
-            BuildableName = "newsGuess.app"
-            BlueprintName = "newsGuess"
-            ReferencedContainer = "container:newsGuess.xcodeproj">
+            BuildableName = "Codeforces Watcher.app"
+            BlueprintName = "Codeforces Watcher"
+            ReferencedContainer = "container:Codeforces Watcher.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -14,7 +14,7 @@ enum Constants {
     static let dateFontSize: CGFloat = 13
     static let handleFontSize: CGFloat = 15
     
-    static let notificationDelay: Double = 60 * 60 * 7 - 160
+    static let notificationDelay: Double = 60 * 60 * 2
     
     static let contestsName: String = "contests"
     static let noInfo: String = "Нет"
