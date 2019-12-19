@@ -8,16 +8,18 @@
 
 import UIKit
 import Foundation
+import UserNotifications
 
 class ContestsViewController: UIViewController, ContestsView {
     
     private var sections = [ContestSectionViewModel]()
     private var presenter: ContestsPresenter!
     private let refresh = UIRefreshControl()
-
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureView()
     }
     
@@ -27,6 +29,7 @@ class ContestsViewController: UIViewController, ContestsView {
         tableView.dataSource = self
         presenter = ContestsPresenter(view: self)
         presenter.onViewDidLoad()
+        localNotifications()
         
         tableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
@@ -36,20 +39,51 @@ class ContestsViewController: UIViewController, ContestsView {
         tableView.refreshControl?.endRefreshing()
     }
     
-    func configureView() {
+    private func configureView() {
         tableView.backgroundColor = .white
         navigationController?.navigationBar.topItem?.title = "Контесты"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.barTintColor = UIColor.systemBlue
+        navigationController?.navigationBar.tintColor = .white
     }
-    func reloadView() {
+    internal func reloadView() {
         tableView.reloadData()
     }
-    func display(viewModel: [ContestSectionViewModel]) {
+    internal func display(viewModel: [ContestSectionViewModel]) {
         sections = viewModel
     }
-    
-    
+    private func localNotifications() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        }
+        guard let contest = sections.first?.cells.first?.contests else {
+            return
+        }
+        guard let dateInUnix = contest.startTimeSeconds else {
+            return
+        }
+        let contestDate = Date(timeIntervalSince1970: dateInUnix)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Hey, Round is coming"
+        content.body = contest.name
+        
+        let date = Date().addingTimeInterval(Date().distance(to: contestDate) - Constants.notificationDelay)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        center.add(request) { (error) in
+            guard let error = error else {
+                return
+            }
+            print(error)
+        }
+    }
 }
+
 
 extension ContestsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,7 +161,7 @@ private class ContestTableCell: UITableViewCell {
         date.textColor = UIColor.gray
     }
     
-    func configureConstraints() {
+    private func configureConstraints() {
         NSLayoutConstraint.activate([
             name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),

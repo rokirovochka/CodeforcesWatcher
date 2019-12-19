@@ -26,18 +26,20 @@ class PeoplePresenter {
     }
     
     func onViewDidLoad() {
-        let handles = UserDefaults.standard.object(forKey: "handles") as! [String]
+        guard let handles = UserDefaults.standard.object(forKey: "handles") as? [String] else {
+            return
+        }
         presentViewModel(cellsCount: handles.count)
     }
     
     private func presentViewModel(cellsCount: Int) {
         var sections = [UserSectionViewModel]()
-        let handles = UserDefaults.standard.object(forKey: "handles") as! [String]
+        
+        guard let handles = UserDefaults.standard.object(forKey: "handles") as? [String] else {
+            return
+        }
         
         for handle in handles {
-            if handle == Constants.emptyString {
-                continue
-            }
             guard let userData = loadUser(handle: handle), let userRC = loadUserRC(handle: handle) else {
                 continue
             }
@@ -50,19 +52,25 @@ class PeoplePresenter {
     }
     
     func addUserToWatch(handle: String?, update: Bool) {
-        guard let handle = handle?.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ";", with: "") else {
+        guard let handle = handle else {
             return
         }
-        var handles = UserDefaults.standard.object(forKey: "handles") as! [String]
+        guard let tmpHandles = UserDefaults.standard.object(forKey: "handles") as? [String] else {
+            print("aaa")
+            return
+        }
+        var handles = tmpHandles
         if !update && handles.contains(handle) {
             return
         }
+        
         codeforcesService.loadUserDataFromCloud(handle: handle) {(data) in
             guard let data = data else {
                 return
             }
+            
             let requestUserData = try? JSONDecoder().decode(RequestUsersProfileViewModel.self, from: data)
-            if let userData = requestUserData?.result?[0] {
+            if let userData = requestUserData?.result?.first {
                 self.cacheService.saveUserToCache(handle: handle.lowercased(), userData: userData)
                 if !update {
                     handles.append(handle.lowercased())
@@ -70,6 +78,7 @@ class PeoplePresenter {
                 }
                 self.presentViewModel(cellsCount: handles.count)
             }
+            
         }
         codeforcesService.loadUserRatingChangeFromCloud(handle: handle) {(data) in
             guard let data = data else {

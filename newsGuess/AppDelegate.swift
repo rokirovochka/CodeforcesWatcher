@@ -21,13 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(userDataUrl, forKey: "userDataUrl")
         UserDefaults.standard.set(contestsUrl, forKey: "contestsUrl")
         UserDefaults.standard.set(ratingChange, forKey: "ratingChange")
-        
-        var handles = UserDefaults.standard.object(forKey: "handles") as? [String]
-        
-        if handles?.count == 0 {
-            handles?.append(Constants.emptyString)
-            UserDefaults.standard.set(handles, forKey: "handles")
-        }
         return true
     }
     

@@ -12,7 +12,7 @@ import Foundation
 
 class PeopleViewController: UIViewController, PeopleView {
     
-    var shareData: UserViewModel?
+    private var shareData: UserViewModel?
     private var sections = [UserSectionViewModel]()
     private var presenter: PeoplePresenter!
     private let refresh = UIRefreshControl()
@@ -21,14 +21,9 @@ class PeopleViewController: UIViewController, PeopleView {
     @IBOutlet weak var addHandleButton: UIButton!
     @IBOutlet var tableView: UITableView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        configureView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        configureViews()
         
         presenter = PeoplePresenter(view: self)
         
@@ -40,13 +35,21 @@ class PeopleViewController: UIViewController, PeopleView {
     }
     
     @objc func handleRefreshControl() {
-        for handle in UserDefaults.standard.object(forKey: "handles") as! [String] {
+        guard let handles = UserDefaults.standard.object(forKey: "handles") as? [String] else {
+            tableView.refreshControl?.endRefreshing()
+            return
+        }
+        for handle in handles {
             presenter.addUserToWatch(handle: handle, update: true)
         }
         tableView.refreshControl?.endRefreshing()
     }
     
-    func configureView() {
+    private func configureViews() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        handleToAdd.delegate = self
+        
         tableView.backgroundColor = .white
         navigationController?.navigationBar.topItem?.title = "Люди"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -54,27 +57,44 @@ class PeopleViewController: UIViewController, PeopleView {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    func display(viewModel: [UserSectionViewModel]) {
+    internal func display(viewModel: [UserSectionViewModel]) {
         sections = viewModel
     }
     
-    func reloadView() {
+    internal func reloadView() {
         tableView.reloadData()
     }
     
     @IBAction func onAddButtonTapped(_ sender: Any) {
         presenter.addUserToWatch(handle: handleToAdd.text, update: false)
+        handleToAdd.text = Constants.emptyString
     }
-    
+}
+
+extension PeopleViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension PeopleViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(Constants.cellHeight)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        setBackgroundMessage(tableView: tableView)
         return sections.count
+    }
+    
+    func setBackgroundMessage(tableView: UITableView) {
+        if sections.isEmpty {
+            tableView.setEmptyMessage("У вас еще нет пользователей для отслеживания.\n Добавьте первого, кнопкой '+' вверху экрана")
+        } else {
+            tableView.restore()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,11 +115,13 @@ extension PeopleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Удалить") {
             _, indexPath in
+            
             let handle = self.sections[indexPath.section].cells[indexPath.row].userData.handle.lowercased()
-            var handles = UserDefaults.standard.object(forKey: "handles") as! [String]
+            guard var handles = UserDefaults.standard.object(forKey: "handles") as? [String] else {
+                return
+            }
             if handles.contains(handle){handles.removeAll(where:{ handle == $0 })}
             UserDefaults.standard.set(handles, forKey: "handles")
-            print(handles)
             self.sections[indexPath.section].cells.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -185,7 +207,7 @@ private class UserTableCell: UITableViewCell {
         lastUpdate.textColor = UIColor.gray
     }
     
-    func setFonts() {
+    private func setFonts() {
         handle.font = handle.font.withSize(Constants.handleFontSize)
         delta.font = delta.font.withSize(Constants.handleFontSize)
         lastUpdate.font = lastUpdate.font.withSize(Constants.handleFontSize)
@@ -193,7 +215,7 @@ private class UserTableCell: UITableViewCell {
         
     }
     
-    func setColor(rank: String?) {
+    private func setColor(rank: String?) {
         var color: UIColor = .gray
         guard let rankStr = rank else {
             return
@@ -218,7 +240,7 @@ private class UserTableCell: UITableViewCell {
             color = .red
         case .internationalGrandmaster:
             color = .red
-        case .legendaryGrandmaster: //dic
+        case .legendaryGrandmaster:
             handle.attributedText = getAttributedString(text: handle.text!)
             rating.attributedText = getAttributedString(text: rating.text!)
             return
@@ -229,14 +251,14 @@ private class UserTableCell: UITableViewCell {
         rating.textColor = color
     }
     
-    func getAttributedString(text: String) -> NSMutableAttributedString {
+    private func getAttributedString(text: String) -> NSMutableAttributedString {
         let string = NSMutableAttributedString(string: text, attributes: nil )
         string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: text.count))
         string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(location: 0,length: 1))
         return string
     }
     
-    func configureConstraints() {
+    private func configureConstraints() {
         NSLayoutConstraint.activate([
             handle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             handle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),

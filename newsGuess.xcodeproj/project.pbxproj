@@ -17,6 +17,7 @@
 		2193DAA2238C3B7B009143C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2193DAA0238C3B7B009143C8 /* Main.storyboard */; };
 		2193DAA4238C3B7F009143C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2193DAA3238C3B7F009143C8 /* Assets.xcassets */; };
 		2193DAA7238C3B7F009143C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2193DAA5238C3B7F009143C8 /* LaunchScreen.storyboard */; };
+		21960FE723AAA1AC00F36703 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21960FE623AAA1AC00F36703 /* TableViewExtension.swift */; };
 		21EE1E95239F81760060BFEF /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE1E94239F81760060BFEF /* PeopleViewController.swift */; };
 		21EE1E97239F8EDC0060BFEF /* LoadServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE1E96239F8EDC0060BFEF /* LoadServices.swift */; };
 		21EE1E9D23A017510060BFEF /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE1E9C23A017510060BFEF /* UserViewController.swift */; };
@@ -36,6 +37,7 @@
 		2193DAA3238C3B7F009143C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2193DAA6238C3B7F009143C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2193DAA8238C3B7F009143C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21960FE623AAA1AC00F36703 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		21EE1E94239F81760060BFEF /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		21EE1E96239F8EDC0060BFEF /* LoadServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadServices.swift; sourceTree = "<group>"; };
 		21EE1E9C23A017510060BFEF /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				2193DAA0238C3B7B009143C8 /* Main.storyboard */,
 				217A8D1623A1562D00C5FD19 /* PeoplePresenter.swift */,
 				213FC81123A7C2A300155A76 /* ContestsPresenter.swift */,
+				21960FE623AAA1AC00F36703 /* TableViewExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			files = (
 				21EE1E95239F81760060BFEF /* PeopleViewController.swift in Sources */,
 				213FC81A23A7EC1600155A76 /* Rank.swift in Sources */,
+				21960FE723AAA1AC00F36703 /* TableViewExtension.swift in Sources */,
 				21EE1E9D23A017510060BFEF /* UserViewController.swift in Sources */,
 				2193DA9B238C3B7B009143C8 /* AppDelegate.swift in Sources */,
 				213FC81623A7C8E200155A76 /* ContestsViewModel.swift in Sources */,
@@ -341,12 +345,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MK626ZQ2M4;
 				INFOPLIST_FILE = newsGuess/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = someId.newsGuess;
+				PRODUCT_BUNDLE_IDENTIFIER = someId.newsGuess123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,12 +364,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MK626ZQ2M4;
 				INFOPLIST_FILE = newsGuess/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = someId.newsGuess;
+				PRODUCT_BUNDLE_IDENTIFIER = someId.newsGuess123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

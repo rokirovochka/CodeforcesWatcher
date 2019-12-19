@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rp-XU-Kkw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pQB-I9-tAT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,13 +30,32 @@
                         <viewLayoutGuide key="safeArea" id="Age-EH-tus"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Контесты" image="calendar" catalog="system" id="Bme-3U-PM8"/>
+                    <navigationItem key="navigationItem" id="uFG-UH-Oj3"/>
                     <connections>
                         <outlet property="tableView" destination="2md-iV-YqQ" id="biI-QS-j6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfo-50-iJf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="361"/>
+            <point key="canvasLocation" x="1758" y="397"/>
+        </scene>
+        <!--Контесты-->
+        <scene sceneID="yFe-kR-WcS">
+            <objects>
+                <navigationController id="ETy-B4-cIH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Контесты" image="calendar" catalog="system" id="ugC-cF-Uyz"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fLI-z2-fqB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8pw-r1-Ery" kind="relationship" relationship="rootViewController" id="DZJ-Zv-eKo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ke-Ih-Bbi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752" y="396"/>
         </scene>
         <!--Задачи-->
         <scene sceneID="14b-42-Pp8">
@@ -49,29 +68,29 @@
                         <viewLayoutGuide key="safeArea" id="ieK-SC-L8q"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Задачи" image="pencil" catalog="system" id="oug-Ha-EH6"/>
+                    <navigationItem key="navigationItem" id="0dp-4K-srE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXQ-j0-wXj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027" y="413"/>
+            <point key="canvasLocation" x="-378" y="794"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DFP-qj-nZo">
+        <!--Люди-->
+        <scene sceneID="6fI-Kd-UgJ">
             <objects>
-                <navigationController id="8rp-XU-Kkw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nsh-A6-qvS">
+                <navigationController id="PZG-ot-ni3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Люди" image="person.3.fill" catalog="system" id="n74-YV-8rk"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8o5-hR-V4U">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dyj-Vr-FRc">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
-                        <segue destination="pQB-I9-tAT" kind="relationship" relationship="rootViewController" id="uIR-VQ-9d9"/>
+                        <segue destination="LCR-d6-eCa" kind="relationship" relationship="rootViewController" id="e8A-vs-9Ff"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9R0-Ji-PAS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcf-t9-Q6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1459" y="38"/>
+            <point key="canvasLocation" x="290" y="-404"/>
         </scene>
         <!--Люди-->
         <scene sceneID="S3V-Pi-QFp">
@@ -106,6 +125,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="IsM-kq-JwX" firstAttribute="leading" secondItem="xkG-bL-jtT" secondAttribute="leading" id="0wQ-yv-Vlm"/>
                             <constraint firstItem="xkG-bL-jtT" firstAttribute="trailing" secondItem="pJs-rd-mEr" secondAttribute="trailing" constant="15" id="A6d-Ht-vuR"/>
@@ -122,6 +142,7 @@
                         <viewLayoutGuide key="safeArea" id="xkG-bL-jtT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Люди" image="person.3.fill" catalog="system" id="k9D-mg-inp"/>
+                    <navigationItem key="navigationItem" id="UdO-xa-GjE"/>
                     <connections>
                         <outlet property="addHandleButton" destination="pJs-rd-mEr" id="fai-Dx-Ita"/>
                         <outlet property="handleToAdd" destination="Cxu-NR-biV" id="SPs-5V-Gzf"/>
@@ -131,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wpm-hT-VCK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7.2463768115942031" y="-404.46428571428572"/>
+            <point key="canvasLocation" x="1065" y="-404"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="Ze6-1i-IFM">
@@ -200,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKq-jX-Fhs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702.89855072463774" y="-404.46428571428572"/>
+            <point key="canvasLocation" x="1759" y="-404"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vv8-TI-5s3">
@@ -213,14 +234,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="LCR-d6-eCa" kind="relationship" relationship="viewControllers" id="tNd-GX-or6"/>
-                        <segue destination="8pw-r1-Ery" kind="relationship" relationship="viewControllers" id="TG6-QT-iIQ"/>
-                        <segue destination="i9R-Yc-vcC" kind="relationship" relationship="viewControllers" id="MPV-db-1rY"/>
+                        <segue destination="PZG-ot-ni3" kind="relationship" relationship="viewControllers" id="6GW-sc-ae8"/>
+                        <segue destination="ETy-B4-cIH" kind="relationship" relationship="viewControllers" id="c9Z-cJ-k8e"/>
+                        <segue destination="qch-up-Qnd" kind="relationship" relationship="viewControllers" id="xQd-Fk-tJd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vf6-QR-gbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679" y="38"/>
+            <point key="canvasLocation" x="-641" y="38"/>
+        </scene>
+        <!--Задачи-->
+        <scene sceneID="G43-MR-veN">
+            <objects>
+                <navigationController id="qch-up-Qnd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Задачи" image="pencil" catalog="system" id="P91-mW-hC1"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zK5-rG-E8s">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="i9R-Yc-vcC" kind="relationship" relationship="rootViewController" id="ct2-xg-cnv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3LA-x1-r8k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1306" y="794"/>
         </scene>
     </scenes>
     <resources>

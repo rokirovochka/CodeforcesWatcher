@@ -8,11 +8,6 @@
 
 import UIKit
 
-/*
- добавить еще пару вещей : графики
- сортировка ячеек по значениям
- notifications
- */
 class UserViewController: UIViewController {
 
     @IBOutlet weak var titlePhoto: UIImageView!
@@ -23,26 +18,30 @@ class UserViewController: UIViewController {
     @IBOutlet weak var deleteUser: UIBarButtonItem!
     var userData: UserViewModel?
     
-    override func viewWillAppear(_ animated: Bool) {
-           configureView()
-       }
-       
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
+        configureViews()
         configure()
     }
     
-    func commonInit() {
+    private func commonInit() {
         titlePhoto.layer.cornerRadius = 50
         titlePhoto.clipsToBounds = true
     }
     
-    func configureView() {
-        navigationController?.navigationBar.topItem?.title = userData?.handle
+    private func configureViews() {
+        title = userData?.handle
+        let backButton = UIBarButtonItem(
+              title: "",
+              style: .plain,
+              target: nil,
+              action: nil
+        )
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    func configure() {
+    private func configure() {
         maxrating.text = "Макс. рейтинг: "
         rating.text = "Текущий рейтинг: "
         name.text = "Имя: "
@@ -50,17 +49,17 @@ class UserViewController: UIViewController {
         if let tmpMaxRating = userData?.maxRating {
             maxrating.text! += String(tmpMaxRating)
         } else {
-            maxrating.text! += "Нет"
+            maxrating.text! += Constants.noInfo
         }
         if let tmpRating = userData?.rating {
             rating.text! += String(tmpRating)
         } else {
-            rating.text! += "Нет"
+            rating.text! += Constants.noInfo
         }
         if let tmpRank = userData?.rank {
             rank.text! += String(tmpRank)
         } else {
-            rank.text! += "Нет"
+            rank.text! += Constants.noInfo
         }
         if let tmpFirstName = userData?.firstName {
             name.text! += tmpFirstName + " "
@@ -69,14 +68,19 @@ class UserViewController: UIViewController {
             name.text! += tmpLastName
         } else {
             if userData?.firstName == nil {
-                name.text! += "Нет"
+                name.text! += Constants.noInfo
             }
         }
+        guard let avatarUrlPath = userData?.avatar else {
+            return
+        }
         
-        let photo = "https:" + userData!.avatar
-        if let url = URL(string: photo) {
-            if let data = try? Data(contentsOf: url){
-                titlePhoto.image = UIImage(data: data)
+        DispatchQueue.main.async {
+            let photo = "https:" + avatarUrlPath
+            if let url = URL(string: photo) {
+                if let data = try? Data(contentsOf: url){
+                    self.titlePhoto.image = UIImage(data: data)
+                }
             }
         }
     }
