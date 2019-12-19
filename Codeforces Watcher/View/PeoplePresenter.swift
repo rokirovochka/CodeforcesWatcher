@@ -55,7 +55,9 @@ class PeoplePresenter {
         guard let handle = handle else {
             return
         }
-        let tmpHandles = UserDefaults.standard.object(forKey: "handles") as! [String]
+        guard let tmpHandles = UserDefaults.standard.object(forKey: "handles") as? [String] else {
+            return
+        }
         var handles = tmpHandles
         
         if !update && handles.contains(handle) {
