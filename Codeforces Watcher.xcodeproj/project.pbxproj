@@ -18,6 +18,7 @@
 		2193DAA4238C3B7F009143C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2193DAA3238C3B7F009143C8 /* Assets.xcassets */; };
 		2193DAA7238C3B7F009143C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2193DAA5238C3B7F009143C8 /* LaunchScreen.storyboard */; };
 		21960FE723AAA1AC00F36703 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21960FE623AAA1AC00F36703 /* TableViewExtension.swift */; };
+		21960FE923AB71B600F36703 /* Cf watcher icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 21960FE823AB71B500F36703 /* Cf watcher icon.png */; };
 		21EE1E95239F81760060BFEF /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE1E94239F81760060BFEF /* PeopleViewController.swift */; };
 		21EE1E97239F8EDC0060BFEF /* LoadServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE1E96239F8EDC0060BFEF /* LoadServices.swift */; };
 		21EE1E9D23A017510060BFEF /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE1E9C23A017510060BFEF /* UserViewController.swift */; };
@@ -38,6 +39,7 @@
 		2193DAA6238C3B7F009143C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2193DAA8238C3B7F009143C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21960FE623AAA1AC00F36703 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		21960FE823AB71B500F36703 /* Cf watcher icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cf watcher icon.png"; sourceTree = "<group>"; };
 		21EE1E94239F81760060BFEF /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		21EE1E96239F8EDC0060BFEF /* LoadServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadServices.swift; sourceTree = "<group>"; };
 		21EE1E9C23A017510060BFEF /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		217A8D1923A15FD200C5FD19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				21960FE823AB71B500F36703 /* Cf watcher icon.png */,
 				21EE1E9E23A0984D0060BFEF /* PeopleViewModel.swift */,
 				213FC81523A7C8E200155A76 /* ContestsViewModel.swift */,
 				213FC81723A7EAA300155A76 /* Constants.swift */,
@@ -178,6 +181,7 @@
 			files = (
 				2193DAA7238C3B7F009143C8 /* LaunchScreen.storyboard in Resources */,
 				2193DAA4238C3B7F009143C8 /* Assets.xcassets in Resources */,
+				21960FE923AB71B600F36703 /* Cf watcher icon.png in Resources */,
 				2193DAA2238C3B7B009143C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
